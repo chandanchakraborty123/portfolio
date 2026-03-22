@@ -11,7 +11,12 @@ app = Flask(__name__)
 CORS(app)
 
 # MongoDB connect
-client = MongoClient(os.getenv("MONGO_URI"))
+mongo_uri = os.getenv("MONGO_URI")
+
+if not mongo_uri:
+    raise Exception("MONGO_URI not found")
+
+client = MongoClient(mongo_uri)
 db = client["portfolio_db"]
 
 projects_collection = db["projects"]
