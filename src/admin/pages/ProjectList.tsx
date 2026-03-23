@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../../services/api";
 import ProjectModal from "../components/ProjectModal";
 import ConfirmModal from "../components/ConfirmModal";
 
@@ -10,7 +11,7 @@ function ProjectList() {
   const [editData, setEditData] = useState<any>(null);
 
   const fetchProjects = async () => {
-    const res = await fetch("http://localhost:5000/projects");
+    const res = await fetch(`${BASE_URL}/projects`);
     const data = await res.json();
     setProjects(data);
   };
@@ -146,7 +147,7 @@ function ProjectList() {
       <ConfirmModal
         onCancel={() => setConfirmOpen(false)}
         onConfirm={async () => {
-          await fetch(`http://localhost:5000/projects/${selectedIndex}`, {
+          await fetch(`${BASE_URL}/projects/${selectedIndex}`, {
             method: "DELETE",
           });
           fetchProjects();

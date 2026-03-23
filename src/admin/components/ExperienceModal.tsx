@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from "../../services/api";
 
 function ExperienceModal({ close, refresh, editData }: any) {
   const [company, setCompany] = useState("");
@@ -18,8 +19,8 @@ function ExperienceModal({ close, refresh, editData }: any) {
   const handleSubmit = async () => {
     const method = editData ? "PUT" : "POST";
     const url = editData
-      ? `http://localhost:5000/experience/${editData._id}`
-      : "http://localhost:5000/experience/add";
+      ? `${BASE_URL}/experience/${editData._id}`
+      : `${BASE_URL}/experience/add`;
 
     await fetch(url, {
       method,

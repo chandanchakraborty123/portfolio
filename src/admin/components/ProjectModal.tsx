@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from "../../services/api";
 
 function ProjectModal({ close, refresh, editData, index }: any) {
   const [title, setTitle] = useState("");
@@ -20,8 +21,8 @@ function ProjectModal({ close, refresh, editData, index }: any) {
   const handleSubmit = async () => {
     const method = editData ? "PUT" : "POST";
     const url = editData
-      ? `http://localhost:5000/projects/${index}`
-      : "http://localhost:5000/projects";
+      ? `${BASE_URL}/projects/${index}`
+      : `${BASE_URL}/projects`;
 
     await fetch(url, {
       method,

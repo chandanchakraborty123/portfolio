@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-
+const BASE_URL = import.meta.env.VITE_API_URL;
 const Projects = () => {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchProjects = async () => {
     try {
-      const res = await fetch("http://localhost:5000/projects");
+      const res = await fetch(`${BASE_URL}/projects`);
       const data = await res.json();
       setProjects(data);
     } catch (err) {

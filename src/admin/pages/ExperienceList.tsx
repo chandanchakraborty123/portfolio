@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../../services/api";
 import ExperienceModal from "../components/ExperienceModal";
 import ConfirmModal from "../components/ConfirmModal";
 
@@ -10,7 +11,7 @@ function ExperienceList() {
   const [editData, setEditData] = useState<any>(null);
 
   const fetchExperience = async () => {
-    const res = await fetch("http://localhost:5000/experiences");
+    const res = await fetch(`${BASE_URL}/experiences`);
     const data = await res.json();
     setExperiences(data?.list);
   };
@@ -118,7 +119,7 @@ function ExperienceList() {
         <ConfirmModal
           onCancel={() => setConfirmOpen(false)}
           onConfirm={async () => {
-            await fetch(`http://localhost:5000/experience/${selected._id}`, {
+            await fetch(`${BASE_URL}/experience/${selected._id}`, {
               method: "DELETE",
             });
             fetchExperience();
