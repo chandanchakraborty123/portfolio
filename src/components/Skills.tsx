@@ -39,7 +39,7 @@ const Skills = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillsData.map((category, idx) => (
               <div
-                key={category._id}
+                key={idx}
                 className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 group hover:scale-105"
               >
                 <h3 className="text-lg font-bold text-blue-400 mb-4 group-hover:text-cyan-400 transition-colors">
