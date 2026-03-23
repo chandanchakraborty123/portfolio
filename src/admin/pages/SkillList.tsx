@@ -1,52 +1,82 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SkillModal from "../components/SkillModal";
 import ConfirmModal from "../components/ConfirmModal";
+import {
+  getSkills,
+  addSkill,
+  updateSkill,
+  deleteSkill,
+} from "../../services/skillsApi";
 
 function SkillList() {
   const [skills, setSkills] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedSkill, setSelectedSkill] = useState<any>(null);
   const [editData, setEditData] = useState<any>(null);
 
+  useEffect(() => {
+    fetchSkills();
+  }, []);
+
+  const fetchSkills = async () => {
+    const data = await getSkills();
+    setSkills(data);
+  };
+
   return (
-    <div>
+    <div className="text-white">
+      
       {/* Header */}
-      <div className="flex justify-between mb-4">
-        <h2 className="text-xl font-semibold">Skills</h2>
+      <div className="flex justify-between mb-6">
+        <h2 className="text-2xl font-bold">Skills</h2>
 
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
           onClick={() => {
             setEditData(null);
             setOpen(true);
           }}
         >
-          + Add Skill
+          + Add Category
         </button>
       </div>
 
       {/* List */}
-      <div className="bg-gray-800 rounded p-4">
+      <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
         {skills.length === 0 ? (
-          <p>No skills added</p>
+          <p className="text-gray-400">No skills added</p>
         ) : (
-          skills.map((s, i) => (
+          skills.map((s) => (
             <div
-              key={i}
-              className="flex justify-between border-b border-gray-700 py-2"
+              key={s._id}
+              className="flex justify-between border-b border-gray-700 py-4"
             >
+              {/* Left */}
               <div>
-                <h3>{s.name}</h3>
-                <p className="text-sm text-gray-400">{s.level}</p>
+                <h3 className="text-blue-400 font-semibold">
+                  {s.category}
+                </h3>
+
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {s.skills.map((skill: string, i: number) => (
+                    <span
+                      key={i}
+                      className="bg-gray-800 px-2 py-1 rounded text-sm text-gray-300"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <div className="flex gap-2">
+              {/* Right */}
+              <div className="flex gap-3">
                 <button
-                  className="text-yellow-400"
+                  className="text-yellow-400 hover:text-yellow-300"
                   onClick={() => {
                     setEditData(s);
-                    setSelectedIndex(i);
+                    setSelectedSkill(s);
                     setOpen(true);
                   }}
                 >
@@ -54,9 +84,9 @@ function SkillList() {
                 </button>
 
                 <button
-                  className="text-red-400"
+                  className="text-red-400 hover:text-red-300"
                   onClick={() => {
-                    setSelectedIndex(i);
+                    setSelectedSkill(s);
                     setConfirmOpen(true);
                   }}
                 >
@@ -68,21 +98,21 @@ function SkillList() {
         )}
       </div>
 
-      {/* Modal */}
+      {/* Add/Edit Modal */}
       {open && (
         <SkillModal
           close={() => setOpen(false)}
-          save={(data: any) => {
-            if (editData !== null && selectedIndex !== null) {
-              const updated = [...skills];
-              updated[selectedIndex] = data;
-              setSkills(updated);
+          editData={editData}
+          save={async (data: any) => {
+            if (editData) {
+              await updateSkill(editData._id, data);
             } else {
-              setSkills([...skills, data]);
+              await addSkill(data);
             }
+
+            await fetchSkills(); // refresh
             setOpen(false);
           }}
-          editData={editData}
         />
       )}
 
@@ -90,9 +120,11 @@ function SkillList() {
       {confirmOpen && (
         <ConfirmModal
           onCancel={() => setConfirmOpen(false)}
-          onConfirm={() => {
-            const updated = skills.filter((_, i) => i !== selectedIndex);
-            setSkills(updated);
+          onConfirm={async () => {
+            if (selectedSkill?._id) {
+              await deleteSkill(selectedSkill._id);
+              await fetchSkills();
+            }
             setConfirmOpen(false);
           }}
         />
