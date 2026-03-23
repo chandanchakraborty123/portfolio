@@ -5,16 +5,18 @@ from bson import ObjectId
 import os
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-# MongoDB connect
+# ---------------- DATABASE CONNECTION ----------------
+
 mongo_uri = os.getenv("MONGO_URI")
 
 if not mongo_uri:
-    raise Exception("MONGO_URI not found")
+    raise Exception("❌ MONGO_URI not found in environment variables")
 
 client = MongoClient(mongo_uri)
 db = client["portfolio_db"]
@@ -23,13 +25,19 @@ projects_collection = db["projects"]
 skills_collection = db["skills"]
 experience_collection = db["experiences"]
 
+# ---------------- HEALTH CHECK ----------------
+
+@app.route('/')
+def home():
+    return "🚀 Portfolio Backend Running Successfully"
+
 # ---------------- PROJECT APIs ----------------
 
 @app.route('/projects', methods=['GET'])
 def get_projects():
     projects = []
     for p in projects_collection.find():
-        p['_id'] = str(p['_id'])  # convert ObjectId → string
+        p['_id'] = str(p['_id'])
         projects.append(p)
     return jsonify(projects)
 
@@ -38,7 +46,10 @@ def get_projects():
 def add_project():
     data = request.json
     result = projects_collection.insert_one(data)
-    return {"message": "Project added", "id": str(result.inserted_id)}
+    return jsonify({
+        "message": "✅ Project added",
+        "id": str(result.inserted_id)
+    })
 
 
 @app.route('/projects/<id>', methods=['PUT'])
@@ -47,13 +58,13 @@ def update_project(id):
         {"_id": ObjectId(id)},
         {"$set": request.json}
     )
-    return {"message": "Project updated"}
+    return jsonify({"message": "✅ Project updated"})
 
 
 @app.route('/projects/<id>', methods=['DELETE'])
 def delete_project(id):
     projects_collection.delete_one({"_id": ObjectId(id)})
-    return {"message": "Project deleted"}
+    return jsonify({"message": "✅ Project deleted"})
 
 
 # ---------------- SKILL APIs ----------------
@@ -71,7 +82,10 @@ def get_skills():
 def add_skill():
     data = request.json
     result = skills_collection.insert_one(data)
-    return {"message": "Skill added", "id": str(result.inserted_id)}
+    return jsonify({
+        "message": "✅ Skill added",
+        "id": str(result.inserted_id)
+    })
 
 
 @app.route('/skills/<id>', methods=['PUT'])
@@ -80,35 +94,49 @@ def update_skill(id):
         {"_id": ObjectId(id)},
         {"$set": request.json}
     )
-    return {"message": "Skill updated"}
+    return jsonify({"message": "✅ Skill updated"})
 
 
 @app.route('/skills/<id>', methods=['DELETE'])
 def delete_skill(id):
     skills_collection.delete_one({"_id": ObjectId(id)})
-    return {"message": "Skill deleted"}
+    return jsonify({"message": "✅ Skill deleted"})
+
+
+# ---------------- EXPERIENCE APIs ----------------
 
 @app.route('/experience/add', methods=['POST'])
 def add_experience():
     data = request.json
-    result =  experience_collection.insert_one(data)
-    return {"message":"Experience Added"}
+    result = experience_collection.insert_one(data)
+    return jsonify({
+        "message": "✅ Experience added",
+        "id": str(result.inserted_id)
+    })
 
 
-@app.route('/experiences', methods = ['GET'])
+@app.route('/experiences', methods=['GET'])
 def get_experiences():
-    experiences = {}
-    experienceList = []
+    experience_list = []
     for e in experience_collection.find():
         e['_id'] = str(e['_id'])
-        experienceList.append(e)
-        experiences ={
-            'list':experienceList,
-            'message':"Data Fetched"
-        }
-        return jsonify(experiences)
-    
+        experience_list.append(e)
+
+    return jsonify({
+        "list": experience_list,
+        "message": "✅ Data fetched"
+    })
+
+
+# ---------------- ERROR HANDLER ----------------
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({"error": "❌ Route not found"}), 404
+
+
+# ---------------- MAIN ----------------
+# (Only for local run, Render uses Gunicorn)
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
-    # app.run(debug=True)
-    
+    app.run(host='0.0.0.0', port=5000, debug=True)
