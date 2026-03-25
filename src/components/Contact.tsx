@@ -22,11 +22,11 @@ const Contact = () => {
               <p className="text-blue-400 font-medium hover:text-cyan-400 transition-colors">chakrabortychandan61@gmail.com</p>
             </div>
           </a>
-          <a href="tel:+919876543210" className="group">
+          <a href="tel:+917477590619" className="group">
             <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-8 text-center hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 transform hover:-translate-y-2">
               <div className="text-5xl mb-4">📱</div>
               <h3 className="text-lg font-semibold text-gray-300 mb-2 group-hover:text-blue-400 transition-colors">Phone</h3>
-              <p className="text-blue-400 font-medium hover:text-cyan-400 transition-colors">+91 98765 43210</p>
+              <p className="text-blue-400 font-medium hover:text-cyan-400 transition-colors">+91 74775 90619</p>
             </div>
           </a>
           <div className="group">
