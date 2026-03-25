@@ -4,7 +4,8 @@ from pymongo import MongoClient
 from bson import ObjectId
 import os
 from dotenv import load_dotenv
-
+import jwt
+import datetime
 # Load environment variables
 load_dotenv()
 
@@ -30,7 +31,26 @@ experience_collection = db["experiences"]
 @app.route('/')
 def home():
     return "🚀 Portfolio Backend Running Successfully"
+ADMIN_EMAIL = "admin@gmail.com"
+ADMIN_PASSWORD = "123456"
+SECRET_KEY = "your_secret_key"
 
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.json
+
+    if data['email'] == ADMIN_EMAIL and data['password'] == ADMIN_PASSWORD:
+        token = jwt.encode({
+            "email": data['email'],
+            "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=2)
+        }, SECRET_KEY, algorithm="HS256")
+
+        return jsonify({
+            "token": token,
+            "message": "Login successful"
+        })
+    else:
+        return jsonify({"error": "Invalid credentials"}), 401
 # ---------------- PROJECT APIs ----------------
 
 @app.route('/projects', methods=['GET'])

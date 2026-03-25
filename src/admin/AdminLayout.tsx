@@ -17,7 +17,10 @@ function AdminLayout() {
     if (path !== "/admin" && location.pathname.startsWith(path)) return true;
     return false;
   };
-
+const logout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/login";
+};
   return (
     <div className="d-flex vh-100 bg-light">
       {/* Mobile sidebar overlay */}
@@ -100,7 +103,7 @@ function AdminLayout() {
 
         {/* Sidebar Footer */}
         <div className="p-3 border-top border-secondary mt-auto">
-          <button className="btn btn-link text-white-50 text-decoration-none w-100 text-start px-3 py-2 rounded-2 hover-bg-hover">
+          <button className="btn btn-link text-white-50 text-decoration-none w-100 text-start px-3 py-2 rounded-2 hover-bg-hover" onClick={logout}>
             <i className="bi bi-box-arrow-right me-3"></i>
             <span>Logout</span>
           </button>
