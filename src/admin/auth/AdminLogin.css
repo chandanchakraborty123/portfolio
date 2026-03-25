@@ -1,0 +1,624 @@
+/* Container */
+.login-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0a0f;
+}
+
+/* Animated Background */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Gradient Background Animation */
+.gradient-bg {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    125deg,
+    #1a1a2e 0%,
+    #16213e 25%,
+    #0f3460 50%,
+    #16213e 75%,
+    #1a1a2e 100%
+  );
+  animation: gradientShift 15s ease infinite;
+  top: -50%;
+  left: -50%;
+}
+
+@keyframes gradientShift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(10%, 5%) rotate(2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Particles Animation */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Orb Animation */
+.orb {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0) 70%);
+  animation: orbPulse 8s ease-in-out infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orb-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(139,92,246,0) 80%);
+  animation: orbRotate 12s linear infinite;
+}
+
+@keyframes orbPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+@keyframes orbRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Login Card */
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 420px;
+  background: rgba(15, 25, 35, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  overflow: hidden;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Glow Effect */
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
+  animation: cardGlow 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes cardGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(5%, 5%);
+  }
+}
+
+/* Card Content */
+.card-content {
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon Wrapper */
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  animation: bounceIn 0.5s ease-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.icon-bg {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+.icon-bg i {
+  font-size: 40px;
+  color: #3b82f6;
+}
+
+/* Titles */
+.login-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 32px;
+  animation: fadeIn 0.8s ease-out 0.1s backwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Input Groups */
+.input-group-custom {
+  position: relative;
+  margin-bottom: 20px;
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  z-index: 1;
+  transition: color 0.3s ease;
+  font-size: 18px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 16px 12px 48px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.login-input:focus + .input-focus-effect {
+  transform: scaleX(1);
+}
+
+.login-input:focus ~ .input-icon {
+  color: #3b82f6;
+}
+
+.input-focus-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Login Button */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: slideInRight 0.5s ease-out 0.2s backwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.login-btn:hover::before {
+  left: 100%;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .login-card {
+    width: 90%;
+    margin: 20px;
+  }
+  
+  .card-content {
+    padding: 30px 20px;
+  }
+  
+  .login-title {
+    font-size: 24px;
+  }
+}
+/* Add to existing CSS */
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.05s linear;
+}
+
+.cursor-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 50%;
+  top: -4px;
+  left: -4px;
+  transition: all 0.1s ease;
+}
+
+.cursor-ring {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(59, 130, 246, 0.5);
+  border-radius: 50%;
+  top: -16px;
+  left: -16px;
+  transition: all 0.2s ease;
+}
+
+/* Cursor Variants */
+.custom-cursor.hover .cursor-dot {
+  transform: scale(1.5);
+  background: #8b5cf6;
+}
+
+.custom-cursor.hover .cursor-ring {
+  transform: scale(1.2);
+  border-color: rgba(139, 92, 246, 0.8);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.custom-cursor.input .cursor-dot {
+  transform: scale(1.2);
+  background: #10b981;
+}
+
+.custom-cursor.input .cursor-ring {
+  transform: scale(1.1);
+  border-color: rgba(16, 185, 129, 0.8);
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: -20px;
+}
+
+.custom-cursor.button .cursor-dot {
+  transform: scale(1.8);
+  background: #ef4444;
+}
+
+.custom-cursor.button .cursor-ring {
+  transform: scale(1.5);
+  border-color: rgba(239, 68, 68, 0.8);
+  width: 48px;
+  height: 48px;
+  top: -24px;
+  left: -24px;
+  animation: cursorPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes cursorPulse {
+  0%, 100% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0.8;
+  }
+}
+
+/* Cursor Light Effect */
+.cursor-light {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.05s linear;
+  transform: translate(-50%, -50%);
+}
+
+/* Magnetic Effect on Card */
+.login-card {
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.login-card:hover {
+  transform: scale(1.02);
+}
+
+/* Input Hover Effects */
+.login-input:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Button Ripple Effect */
+.login-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.login-btn:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Magnetic Effect on Inputs */
+.input-group-custom {
+  transition: transform 0.2s ease;
+}
+
+.input-group-custom:hover {
+  transform: translateX(5px);
+}
+
+/* Glow Effect on Hover */
+.login-btn:hover {
+  animation: buttonGlow 1s ease-in-out infinite;
+}
+
+@keyframes buttonGlow {
+  0%, 100% {
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 5px 30px rgba(59, 130, 246, 0.8);
+  }
+}
+
+/* Hide default cursor */
+.login-container {
+  cursor: none;
+}
+
+/* Show default cursor on mobile */
+@media (max-width: 768px) {
+  .login-container {
+    cursor: auto;
+  }
+  .custom-cursor,
+  .cursor-light {
+    display: none;
+  }
+}
+
+/* Add hover effect for card elements */
+.icon-bg:hover {
+  animation: iconSpin 0.5s ease;
+}
+
+@keyframes iconSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add magnetic effect to all interactive elements */
+.login-btn,
+.login-input,
+.icon-bg {
+  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Add floating animation to particles */
+.particle {
+  animation: floatParticle linear infinite;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+/* Add ripple effect on click */
+.login-card:active {
+  transform: scale(0.98);
+}
+
+/* Add shine effect on hover for inputs */
+.login-input:hover {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+/* Add smooth transitions for all interactive elements */
+.login-input,
+.login-btn,
+.icon-bg,
+.card-glow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

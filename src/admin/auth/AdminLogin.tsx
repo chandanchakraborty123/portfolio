@@ -1,9 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "./AdminLogin.css";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [cursorVariant, setCursorVariant] = useState("default");
+
+  useEffect(() => {
+    const handleMouseMove = (e:any) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const handleLogin = async () => {
     setLoading(true);
@@ -30,54 +41,102 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center bg-dark">
-      <div className="card bg-dark border-secondary shadow-lg" style={{ width: "400px" }}>
-        <div className="card-body p-4">
-          <div className="text-center mb-4">
-            <div className="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
-              <i className="bi bi-shield-lock fs-1 text-primary"></i>
+    <div className="login-container">
+      {/* Custom Cursor */}
+      <div 
+        className={`custom-cursor ${cursorVariant}`}
+        style={{
+          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`
+        }}
+      >
+        <div className="cursor-dot"></div>
+        <div className="cursor-ring"></div>
+      </div>
+
+      {/* Animated Background */}
+      <div className="animated-bg">
+        <div className="gradient-bg"></div>
+        <div className="particles">
+          {[...Array(30)].map((_, i) => (
+            <div key={i} className="particle" style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${5 + Math.random() * 10}s`,
+              width: `${2 + Math.random() * 4}px`,
+              height: `${2 + Math.random() * 4}px`
+            }}></div>
+          ))}
+        </div>
+        <div className="orb">
+          <div className="orb-inner"></div>
+        </div>
+      </div>
+
+      {/* Cursor Light Effect */}
+      <div 
+        className="cursor-light"
+        style={{
+          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`
+        }}
+      ></div>
+
+      {/* Login Card */}
+      <div 
+        className="login-card"
+        onMouseEnter={() => setCursorVariant("hover")}
+        onMouseLeave={() => setCursorVariant("default")}
+      >
+        <div className="card-glow"></div>
+        
+        <div className="card-content">
+          <div className="icon-wrapper">
+            <div className="icon-bg">
+              <i className="bi bi-shield-lock"></i>
             </div>
-            <h4 className="text-white mb-1">Admin Login</h4>
-            <small className="text-secondary">Access the admin panel</small>
+          </div>
+          
+          <h2 className="login-title">Admin Login</h2>
+          <p className="login-subtitle">Access the admin panel</p>
+
+          <div 
+            className="input-group-custom"
+            onMouseEnter={() => setCursorVariant("input")}
+            onMouseLeave={() => setCursorVariant("default")}
+          >
+            <i className="bi bi-envelope input-icon"></i>
+            <input
+              type="email"
+              className="login-input"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <div className="input-focus-effect"></div>
           </div>
 
-          <div className="mb-3">
-            <label className="form-label text-white small">Email Address</label>
-            <div className="input-group">
-              <span className="input-group-text bg-dark border-secondary text-secondary">
-                <i className="bi bi-envelope"></i>
-              </span>
-              <input
-                type="email"
-                className="form-control bg-dark border-secondary text-white"
-                placeholder="admin@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <label className="form-label text-white small">Password</label>
-            <div className="input-group">
-              <span className="input-group-text bg-dark border-secondary text-secondary">
-                <i className="bi bi-key"></i>
-              </span>
-              <input
-                type="password"
-                className="form-control bg-dark border-secondary text-white"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && handleLogin()}
-              />
-            </div>
+          <div 
+            className="input-group-custom"
+            onMouseEnter={() => setCursorVariant("input")}
+            onMouseLeave={() => setCursorVariant("default")}
+          >
+            <i className="bi bi-key input-icon"></i>
+            <input
+              type="password"
+              className="login-input"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleLogin()}
+            />
+            <div className="input-focus-effect"></div>
           </div>
 
           <button
             onClick={handleLogin}
             disabled={loading}
-            className="btn btn-primary w-100 py-2 fw-semibold"
+            className="login-btn"
+            onMouseEnter={() => setCursorVariant("button")}
+            onMouseLeave={() => setCursorVariant("default")}
           >
             {loading ? (
               <>
