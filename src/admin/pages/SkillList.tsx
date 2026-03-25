@@ -38,7 +38,7 @@ function SkillList() {
             setOpen(true);
           }}
         >
-          + Add Category
+          + Add Skill
         </button>
       </div>
 

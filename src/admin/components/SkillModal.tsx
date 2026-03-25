@@ -26,7 +26,7 @@ function SkillModal({ close, save, editData }: any) {
       <div className="bg-gray-900 text-white p-6 rounded-2xl w-96 border border-gray-700 shadow-xl">
         
         <h2 className="mb-4 text-xl font-bold text-blue-400">
-          {editData ? "Edit Category" : "Add Category"}
+          {editData ? "Edit Skill" : "Add Skill"}
         </h2>
 
         {/* Category */}
