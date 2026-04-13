@@ -54,6 +54,19 @@ const Projects = () => {
             "Tailwind CSS"
         ],
         "title": "Sabioinfotech Website"
+    },
+    {
+        "_id": "69bd7a9c47b3957240930482",
+        "description": "Lalit Tutorials is a coaching institute for NEET and JEE preparation. It provides expert guidance, study materials, and test series for students.",
+        "icon": "📚",
+        "link": "https://www.lalittutorials.com/",
+        "tech": [
+            "HTML",
+            "PHP",
+            "JavaScript",
+            "CSS"
+        ],
+        "title": "Lalit Tutorials"
     }
 ]
       setProjects(data);
