@@ -6,19 +6,70 @@ const Skills = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchSkills();
+    // fetchSkills();
+
+    let data = [
+    {
+        "_id": "69c17697eed96261e15a2f2d",
+        "category": "Frontend Frameworks",
+        "skills": [
+            "React.js",
+            "Angular (13–15+)"
+        ]
+    },
+    {
+        "_id": "69c176d7eed96261e15a2f2e",
+        "category": "Languages",
+        "skills": [
+            "TypeScript",
+            "JavaScript (ES6+)",
+            "HTML5",
+            "CSS3"
+        ]
+    },
+    {
+        "_id": "69c17772eed96261e15a2f2f",
+        "category": "Styling & UI",
+        "skills": [
+            "Tailwind CSS",
+            "Bootstrap",
+            "SCSS",
+            "Responsive Design"
+        ]
+    },
+    {
+        "_id": "69c177b5eed96261e15a2f30",
+        "category": "State Management & APIs",
+        "skills": [
+            "Redux Toolkit",
+            "RxJS",
+            "REST API Integration"
+        ]
+    },
+    {
+        "_id": "69c17976eed96261e15a2f31",
+        "category": "Tools & Version Control",
+        "skills": [
+            "Git & GitHub"
+        ]
+    }
+]
+
+
+    setSkillsData(data);
+    setLoading(false);
   }, []);
 
-  const fetchSkills = async () => {
-    try {
-      const data = await getSkills();
-      setSkillsData(data);
-    } catch (err) {
-      console.error("Error fetching skills:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const fetchSkills = async () => {
+  //   try {
+  //     const data = await getSkills();
+  //     setSkillsData(data);
+  //   } catch (err) {
+  //     console.error("Error fetching skills:", err);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <section id="skills" className="py-32 px-6 bg-gray-950">

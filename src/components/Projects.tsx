@@ -1,23 +1,63 @@
 import { useEffect, useState } from "react";
-const BASE_URL = import.meta.env.VITE_API_URL;
+// const BASE_URL = import.meta.env.VITE_API_URL;
 const Projects = () => {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchProjects = async () => {
-    try {
-      const res = await fetch(`${BASE_URL}/projects`);
-      const data = await res.json();
-      setProjects(data);
-    } catch (err) {
-      console.error("Error fetching projects:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const fetchProjects = async () => {
+  //   try {
+  //     const res = await fetch(`${BASE_URL}/projects`);
+  //     const data = await res.json();
+  //     setProjects(data);
+  //   } catch (err) {
+  //     console.error("Error fetching projects:", err);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchProjects();
+    // fetchProjects();
+    let data = [
+    {
+        "_id": "69bd796847b395724093047f",
+        "description": "AI-powered recruitment and resume builder platform with modern UI and seamless API integration.",
+        "icon": "🤖",
+        "link": "",
+        "tech": [
+            "React JS",
+            "TypeScript",
+            "Redux Toolkit",
+            "REST API"
+        ],
+        "title": "TalentFit AI"
+    },
+    {
+        "_id": "69bd7a0047b3957240930480",
+        "description": "Official website for Telangana American Telugu Association with Instagram API integration.",
+        "icon": "🌐",
+        "link": "",
+        "tech": [
+            "Angular",
+            "RxJS",
+            "Bootstrap"
+        ],
+        "title": "TTA Website"
+    },
+    {
+        "_id": "69bd7a5d47b3957240930481",
+        "description": "Corporate website built with modern UI and responsive design principles.",
+        "icon": "💼",
+        "link": "https://www.sabioinfotech.com/",
+        "tech": [
+            "React JS",
+            "Tailwind CSS"
+        ],
+        "title": "Sabioinfotech Website"
+    }
+]
+      setProjects(data);
+      setLoading(false);
   }, []);
 
   return (
