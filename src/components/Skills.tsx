@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSkills } from "../services/skillsApi";
+// import { getSkills } from "../services/skillsApi";
 
 const Skills = () => {
   const [skillsData, setSkillsData] = useState<any[]>([]);
