@@ -5,6 +5,7 @@ const Skills = () => {
   const [skillsData, setSkillsData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  
   useEffect(() => {
     // fetchSkills();
 
