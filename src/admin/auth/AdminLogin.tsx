@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./AdminLogin.css";
 import ThemeToggle from "../../components/ThemeToggle";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState("default");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleMouseMove = (e:any) => {
@@ -43,6 +45,16 @@ const AdminLogin = () => {
 
   return (
     <div className="login-container">
+      <button
+        type="button"
+        className="login-back-btn"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        <i className="bi bi-arrow-left"></i>
+      </button>
+
       <ThemeToggle className="login-theme-toggle" compact />
 
       {/* Custom Cursor */}

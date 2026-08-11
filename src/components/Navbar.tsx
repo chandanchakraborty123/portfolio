@@ -64,6 +64,11 @@ const Navbar = () => {
 
             <ThemeToggle className="navbar-theme-btn" />
 
+            <a href="/login" className="navbar-login-btn">
+              <i className="bi bi-box-arrow-in-right me-2"></i>
+              Login
+            </a>
+
             {/* CTA Button */}
             <a
               href={resumePdf}
@@ -133,6 +138,15 @@ const Navbar = () => {
 
               <div className="sidebar-footer">
                 <ThemeToggle className="sidebar-theme-btn" />
+
+                <a
+                  href="/login"
+                  className="sidebar-login-btn"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <i className="bi bi-box-arrow-in-right me-2"></i>
+                  Login
+                </a>
 
                 <a
                   href={resumePdf}

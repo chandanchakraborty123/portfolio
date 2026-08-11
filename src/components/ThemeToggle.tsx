@@ -5,7 +5,7 @@ type ThemeToggleProps = {
   compact?: boolean;
 };
 
-const ThemeToggle = ({ className = "", compact = false }: ThemeToggleProps) => {
+const ThemeToggle = ({ className = "", compact = true }: ThemeToggleProps) => {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
 
@@ -17,8 +17,7 @@ const ThemeToggle = ({ className = "", compact = false }: ThemeToggleProps) => {
       aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
       title={`Switch to ${isDark ? "light" : "dark"} theme`}
     >
-      <i className={`bi ${isDark ? "bi-sun-fill" : "bi-moon-stars-fill"} ${compact ? "" : "me-2"}`}></i>
-      {!compact && <span>{isDark ? "Light" : "Dark"} Mode</span>}
+      <i className={`bi ${isDark ? "bi-sun-fill" : "bi-moon-stars-fill"}`}></i>
     </button>
   );
 };

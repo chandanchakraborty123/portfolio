@@ -80,6 +80,45 @@
   white-space: nowrap;
 }
 
+.navbar-login-btn {
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--app-border);
+  background: transparent;
+  color: var(--app-text);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.navbar-login-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.sidebar-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--app-border);
+  background: transparent;
+  color: var(--app-text);
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-login-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(59, 130, 246, 0.08);
+}
+
 .nav-link {
   color: var(--app-text-secondary);
   text-decoration: none;
