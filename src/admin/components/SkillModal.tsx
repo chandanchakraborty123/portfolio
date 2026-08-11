@@ -25,25 +25,25 @@ function SkillModal({ close, save, editData }: any) {
     <ModalShell
       title={editData ? "Edit Skill" : "Add Skill"}
       onClose={close}
-      size="sm"
+      size="md"
       className=""
       footer={
         <>
-          <button onClick={close} className="btn btn-light border px-4">Cancel</button>
-          <button className="btn btn-primary px-4" onClick={handleSave}>Save</button>
+          <button onClick={close} className="btn btn-light btn-sm border px-3">Cancel</button>
+          <button className="btn btn-primary btn-sm px-3" onClick={handleSave}>Save</button>
         </>
       }
     >
       <div>
         <input
-          className="form-control mb-3 shadow-none"
+          className="form-control form-control-sm mb-2"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           placeholder="Category (e.g. Styling & UI)"
         />
 
         <textarea
-          className="form-control shadow-none"
+          className="form-control form-control-sm"
           value={skills}
           onChange={(e) => setSkills(e.target.value)}
           placeholder="Skills (comma separated)"

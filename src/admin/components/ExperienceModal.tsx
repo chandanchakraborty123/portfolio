@@ -48,19 +48,19 @@ function ExperienceModal({ close, refresh, editData }: any) {
       className=""
       footer={
         <>
-          <button className="btn btn-light border px-4" onClick={close}>Cancel</button>
-          <button className="btn btn-primary px-4" onClick={handleSubmit}>{editData ? "Update" : "Save"}</button>
+          <button className="btn btn-light btn-sm border px-3" onClick={close}>Cancel</button>
+          <button className="btn btn-primary btn-sm px-3" onClick={handleSubmit}>{editData ? "Update" : "Save"}</button>
         </>
       }
     >
       <div>
-        <input className="form-control mb-3 shadow-none" placeholder="Company" value={company} onChange={(e) => setCompany(e.target.value)} />
+        <input className="form-control form-control-sm mb-2" placeholder="Company" value={company} onChange={(e) => setCompany(e.target.value)} />
 
-        <input className="form-control mb-3 shadow-none" placeholder="Role" value={role} onChange={(e) => setRole(e.target.value)} />
+        <input className="form-control form-control-sm mb-2" placeholder="Role" value={role} onChange={(e) => setRole(e.target.value)} />
 
-        <input className="form-control mb-3 shadow-none" placeholder="Duration" value={duration} onChange={(e) => setDuration(e.target.value)} />
+        <input className="form-control form-control-sm mb-2" placeholder="Duration" value={duration} onChange={(e) => setDuration(e.target.value)} />
 
-        <textarea className="form-control shadow-none" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} rows={4} />
+        <textarea className="form-control form-control-sm" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} rows={4} />
       </div>
     </ModalShell>
   );

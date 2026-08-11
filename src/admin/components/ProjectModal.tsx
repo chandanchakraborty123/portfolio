@@ -51,21 +51,21 @@ function ProjectModal({ close, refresh, editData, index }: any) {
       className=""
       footer={
         <>
-          <button className="btn btn-light border px-4" onClick={close}>Cancel</button>
-          <button className="btn btn-primary px-4" onClick={handleSubmit}>{editData ? "Update" : "Save"}</button>
+          <button className="btn btn-light btn-sm border px-3" onClick={close}>Cancel</button>
+          <button className="btn btn-primary btn-sm px-3" onClick={handleSubmit}>{editData ? "Update" : "Save"}</button>
         </>
       }
     >
       <div>
         <input
-          className="form-control mb-3 shadow-none"
+          className="form-control form-control-sm mb-2"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Project Title"
         />
 
         <textarea
-          className="form-control mb-3 shadow-none"
+          className="form-control form-control-sm mb-2"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Project Description"
@@ -73,21 +73,21 @@ function ProjectModal({ close, refresh, editData, index }: any) {
         />
 
         <input
-          className="form-control mb-3 shadow-none"
+          className="form-control form-control-sm mb-2"
           value={tech}
           onChange={(e) => setTech(e.target.value)}
           placeholder="Tech (comma separated e.g. React, Node)"
         />
 
         <input
-          className="form-control mb-3 shadow-none"
+          className="form-control form-control-sm mb-2"
           value={link}
           onChange={(e) => setLink(e.target.value)}
           placeholder="Project Link (https://...)"
         />
 
         <input
-          className="form-control mb-0 shadow-none"
+          className="form-control form-control-sm mb-0"
           value={icon}
           onChange={(e) => setIcon(e.target.value)}
           placeholder="Icon (emoji like 🚀)"
