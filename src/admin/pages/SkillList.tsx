@@ -29,10 +29,10 @@ function SkillList() {
       
       {/* Header */}
       <div className="flex justify-between mb-6">
-        <h2 className="text-2xl font-bold">Skills</h2>
+        <div />
 
         <button
-          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
+          className="btn-blue bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
           onClick={() => {
             setEditData(null);
             setOpen(true);
@@ -43,20 +43,23 @@ function SkillList() {
       </div>
 
       {/* List */}
-      <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
-        {skills.length === 0 ? (
-          <p className="text-gray-400">No skills added</p>
-        ) : (
-          skills.map((s) => (
+      {skills.length === 0 ? (
+        <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
+          <div className="text-center py-6">
+            <i className="bi bi-inbox fs-4 text-gray-400"></i>
+            <p className="text-gray-400 small mt-2 mb-0">No skills added</p>
+          </div>
+        </div>
+      ) : (
+        <div>
+          {skills.map((s) => (
             <div
               key={s._id}
               className="flex justify-between border-b border-gray-700 py-4"
             >
               {/* Left */}
               <div>
-                <h3 className="text-blue-400 font-semibold">
-                  {s.category}
-                </h3>
+                <h3 className="text-blue-400 font-semibold">{s.category}</h3>
 
                 <div className="flex flex-wrap gap-2 mt-2">
                   {s.skills.map((skill: string, i: number) => (
@@ -94,9 +97,9 @@ function SkillList() {
                 </button>
               </div>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Add/Edit Modal */}
       {open && (

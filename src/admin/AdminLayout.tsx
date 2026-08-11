@@ -12,7 +12,7 @@ function AdminLayout() {
     { name: "Dashboard", path: "/admin", icon: "bi bi-speedometer2" },
     { name: "Projects", path: "/admin/projects", icon: "bi bi-folder2-open" },
     { name: "Skills", path: "/admin/skills", icon: "bi bi-code-square" },
-    { name: "Settings", path: "/admin/settings", icon: "bi bi-gear" },
+    // { name: "Settings", path: "/admin/settings", icon: "bi bi-gear" },
   ];
 
   const isActive = (path:any) => {
@@ -46,12 +46,13 @@ const logout = () => {
         `}
         style={{
           width: '280px',
+          minWidth: '280px',
           transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
           transition: 'transform 0.3s ease-in-out',
         }}
       >
         {/* Sidebar Header */}
-        <div className="p-4 border-bottom border-secondary">
+        <div className="p-4 py-3 border-bottom border-secondary">
           <div className="d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center gap-3">
               <div className="bg-gradient-primary rounded d-flex align-items-center justify-content-center" 
@@ -73,7 +74,7 @@ const logout = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-grow-1 p-3">
+        <nav className="flex-grow-1 p-3 admin-sidebar">
           <div className="d-flex flex-column gap-2">
             {navigation.map((item) => {
               const active = isActive(item.path);
@@ -87,7 +88,7 @@ const logout = () => {
                     px-3 py-3 rounded-2 text-decoration-none
                     transition-all
                     ${active 
-                      ? 'bg-gradient-primary text-white shadow' 
+                      ? 'bg-gradient-primary text-white shadow active' 
                       : 'text-white-50 hover-bg-hover'
                     }
                   `}

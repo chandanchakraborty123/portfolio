@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../services/api";
+import ModalShell from "./ModalShell";
 
 function ExperienceModal({ close, refresh, editData }: any) {
   const [company, setCompany] = useState("");
@@ -40,62 +41,28 @@ function ExperienceModal({ close, refresh, editData }: any) {
   };
 
   return (
-    <div className="modal d-block" tabIndex={-1}>
-      <div className="modal-dialog">
-        <div className="modal-content">
+    <ModalShell
+      title={editData ? "Edit Experience" : "Add Experience"}
+      onClose={close}
+      size="md"
+      className=""
+      footer={
+        <>
+          <button className="btn btn-light border px-4" onClick={close}>Cancel</button>
+          <button className="btn btn-primary px-4" onClick={handleSubmit}>{editData ? "Update" : "Save"}</button>
+        </>
+      }
+    >
+      <div>
+        <input className="form-control mb-3 shadow-none" placeholder="Company" value={company} onChange={(e) => setCompany(e.target.value)} />
 
-          <div className="modal-header">
-            <h5 className="modal-title">
-              {editData ? "Edit Experience" : "Add Experience"}
-            </h5>
-            <button className="btn-close" onClick={close}></button>
-          </div>
+        <input className="form-control mb-3 shadow-none" placeholder="Role" value={role} onChange={(e) => setRole(e.target.value)} />
 
-          <div className="modal-body">
+        <input className="form-control mb-3 shadow-none" placeholder="Duration" value={duration} onChange={(e) => setDuration(e.target.value)} />
 
-            <input
-              className="form-control mb-2"
-              placeholder="Company"
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-            />
-
-            <input
-              className="form-control mb-2"
-              placeholder="Role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-            />
-
-            <input
-              className="form-control mb-2"
-              placeholder="Duration"
-              value={duration}
-              onChange={(e) => setDuration(e.target.value)}
-            />
-
-            <textarea
-              className="form-control"
-              placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-
-          </div>
-
-          <div className="modal-footer">
-            <button className="btn btn-secondary" onClick={close}>
-              Cancel
-            </button>
-
-            <button className="btn btn-primary" onClick={handleSubmit}>
-              {editData ? "Update" : "Save"}
-            </button>
-          </div>
-
-        </div>
+        <textarea className="form-control shadow-none" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} rows={4} />
       </div>
-    </div>
+    </ModalShell>
   );
 }
 

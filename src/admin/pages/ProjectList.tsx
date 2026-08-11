@@ -48,172 +48,106 @@ function ProjectList() {
   };
 
   return (
-    <div className="container-fluid px-3 px-md-4 py-3">
-      {/* Compact Header */}
-      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-3 gap-2">
+    <div className="text-white">
+      <div className="flex justify-between items-start mb-6">
         <div>
-          <h5 className="fw-bold mb-0 text-dark">
-            <i className="bi bi-folder2-open me-2"></i>
-            Projects
-          </h5>
-          <small className="text-muted">Manage your portfolio projects</small>
-        </div>
-
-        <button
-          className="btn btn-primary btn-sm px-3 d-flex align-items-center gap-1"
-          onClick={() => {
-            setEditData(null);
-            setOpen(true);
-          }}
-        >
-          <i className="bi bi-plus-lg fs-6"></i>
-          <span>Add Project</span>
-        </button>
-      </div>
-
-      {/* Compact Search Bar */}
-      <div className="card shadow-sm border-0 mb-3">
-        <div className="card-body p-2">
-          <div className="d-flex gap-2 align-items-center">
-            <div className="flex-grow-1 position-relative">
-              <i className="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-2 text-muted small"></i>
+          <div className="mt-3 max-w-md">
+            <div className="search-wrapper">
+              <i className="bi bi-search search-icon text-gray-400" />
               <input
                 type="text"
-                className="form-control form-control-sm ps-4"
+                className="form-control form-control-sm ps-8"
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{ fontSize: '0.875rem' }}
               />
             </div>
-            <span className="text-muted small">
-              <i className="bi bi-folder2-open me-1"></i>
-              {filteredProjects.length}
-            </span>
-            {searchTerm && (
-              <button
-                className="btn btn-sm btn-link text-secondary p-0"
-                onClick={() => setSearchTerm("")}
-                style={{ fontSize: '0.75rem' }}
-              >
-                Clear
-              </button>
-            )}
           </div>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <span className="text-muted small flex items-center gap-1">
+            <i className="bi bi-folder2-open"></i>
+            {filteredProjects.length}
+          </span>
+
+          <button
+            className="btn-blue bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
+            onClick={() => {
+              setEditData(null);
+              setOpen(true);
+            }}
+          >
+            <i className="bi bi-plus-lg me-1"></i>
+            Add Project
+          </button>
         </div>
       </div>
 
-      {/* Compact Grid View */}
       {loading ? (
-        <div className="text-center py-4">
+        <div className="text-center py-6">
           <div className="spinner-border text-primary spinner-border-sm" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
-          <p className="text-muted small mt-2">Loading projects...</p>
+          <p className="text-gray-400 small mt-2">Loading projects...</p>
         </div>
       ) : filteredProjects.length === 0 ? (
-        <div className="card shadow-sm border-0">
-          <div className="card-body text-center py-4">
-            <i className="bi bi-inbox fs-4 text-muted"></i>
-            <p className="text-muted small mt-2 mb-0">
-              {searchTerm ? "No projects match" : "No projects yet"}
-            </p>
+        <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
+          <div className="text-center py-6">
+            <i className="bi bi-inbox fs-4 text-gray-400"></i>
+            <p className="text-gray-400 small mt-2 mb-0">{searchTerm ? "No projects match" : "No projects yet"}</p>
           </div>
         </div>
       ) : (
-        <div className="row g-2">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredProjects.map((p, i) => (
-            <div className="col-md-6 col-xl-4 col-xxl-3" key={p?._id || i}>
-              <div className="card h-100 shadow-sm border-0" style={{ transition: 'all 0.2s ease' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)';
-                }}
-              >
-                <div className="card-body p-3">
-                  {/* Compact Header */}
-                  <div className="d-flex justify-content-between align-items-start mb-2">
-                    <div className={`fs-5 ${getIconColor(p?.icon)}`}>
-                      {p?.icon || "🚀"}
-                    </div>
-                    <div className="btn-group btn-group-sm">
-                      <button
-                        className="btn btn-sm btn-outline-warning"
-                        onClick={() => {
-                          setEditData(p);
-                          setSelectedIndex(i);
-                          setOpen(true);
-                        }}
-                        style={{ padding: '0.2rem 0.4rem', fontSize: '0.75rem' }}
-                      >
-                        <i className="bi bi-pencil-square"></i>
-                      </button>
-                      <button
-                        className="btn btn-sm btn-outline-danger"
-                        onClick={() => {
-                          setSelectedIndex(p?._id);
-                          setConfirmOpen(true);
-                        }}
-                        style={{ padding: '0.2rem 0.4rem', fontSize: '0.75rem' }}
-                      >
-                        <i className="bi bi-trash"></i>
-                      </button>
-                    </div>
+            <div key={p?._id || i}>
+              <div className="bg-gray-900 rounded-xl p-4 border border-gray-700 h-full transition-transform hover:-translate-y-1">
+                <div className="flex justify-between items-start mb-2">
+                  <div className={`${getIconColor(p?.icon)} text-xl`}>{p?.icon || "🚀"}</div>
+                  <div className="flex gap-2">
+                    <button
+                      className="text-yellow-400 hover:text-yellow-300 px-2 py-1 rounded"
+                      onClick={() => {
+                        setEditData(p);
+                        setSelectedIndex(i);
+                        setOpen(true);
+                      }}
+                    >
+                      <i className="bi bi-pencil-square"></i>
+                    </button>
+                    <button
+                      className="text-red-400 hover:text-red-300 px-2 py-1 rounded"
+                      onClick={() => {
+                        setSelectedIndex(p?._id);
+                        setConfirmOpen(true);
+                      }}
+                    >
+                      <i className="bi bi-trash"></i>
+                    </button>
                   </div>
-
-                  {/* Compact Title */}
-                  <h6 className="fw-bold mb-1" style={{ fontSize: '0.95rem' }}>{p?.title}</h6>
-                  
-                  {/* Compact Description */}
-                  <p className="text-muted small mb-2" style={{
-                    fontSize: '0.75rem',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    lineHeight: '1.3'
-                  }}>
-                    {p?.description}
-                  </p>
-
-                  {/* Compact Tech Stack */}
-                  <div className="d-flex flex-wrap gap-1 mb-2">
-                    {p?.tech?.slice(0, 3).map((t: string, idx: number) => (
-                      <span
-                        key={idx}
-                        className="badge bg-light text-dark border px-1 py-0.5"
-                        style={{ fontSize: '0.65rem', fontWeight: 'normal' }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                    {p?.tech?.length > 3 && (
-                      <span className="badge bg-secondary px-1 py-0.5" style={{ fontSize: '0.65rem' }}>
-                        +{p.tech.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Optional Live Link */}
-                  {p?.liveUrl && (
-                    <div className="mt-1 pt-1 border-top">
-                      <a
-                        href={p.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-decoration-none small"
-                        style={{ fontSize: '0.7rem' }}
-                      >
-                        <i className="bi bi-box-arrow-up-right me-1"></i>
-                        Live
-                      </a>
-                    </div>
-                  )}
                 </div>
+
+                <h5 className="font-semibold text-white mb-1 text-sm">{p?.title}</h5>
+
+                <p className="text-gray-400 text-sm mb-3" style={{ lineHeight: 1.3, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{p?.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {p?.tech?.slice(0, 3).map((t: string, idx: number) => (
+                    <span key={idx} className="bg-gray-800 px-2 py-1 rounded text-xs text-gray-300">{t}</span>
+                  ))}
+                  {p?.tech?.length > 3 && <span className="bg-gray-700 px-2 py-1 rounded text-xs text-gray-300">+{p.tech.length - 3}</span>}
+                </div>
+
+                {p?.liveUrl && (
+                  <div className="mt-3 pt-3 border-t border-gray-700">
+                    <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-400">
+                      <i className="bi bi-box-arrow-up-right me-1"></i>
+                      Live
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ))}

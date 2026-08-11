@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../services/api";
+import ModalShell from "./ModalShell";
 
 function ProjectModal({ close, refresh, editData, index }: any) {
   const [title, setTitle] = useState("");
@@ -43,70 +44,56 @@ function ProjectModal({ close, refresh, editData, index }: any) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-xl w-full max-w-md shadow-lg">
-        <h2 className="mb-4 text-xl font-semibold">
-          {editData ? "Edit Project" : "Add Project"}
-        </h2>
-
-        {/* Title */}
+    <ModalShell
+      title={editData ? "Edit Project" : "Add Project"}
+      onClose={close}
+      size="md"
+      className=""
+      footer={
+        <>
+          <button className="btn btn-light border px-4" onClick={close}>Cancel</button>
+          <button className="btn btn-primary px-4" onClick={handleSubmit}>{editData ? "Update" : "Save"}</button>
+        </>
+      }
+    >
+      <div>
         <input
-          className="border w-full mb-3 p-2 rounded"
+          className="form-control mb-3 shadow-none"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Project Title"
         />
 
-        {/* Description */}
         <textarea
-          className="border w-full mb-3 p-2 rounded"
+          className="form-control mb-3 shadow-none"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Project Description"
+          rows={4}
         />
 
-        {/* Tech */}
         <input
-          className="border w-full mb-3 p-2 rounded"
+          className="form-control mb-3 shadow-none"
           value={tech}
           onChange={(e) => setTech(e.target.value)}
           placeholder="Tech (comma separated e.g. React, Node)"
         />
 
-        {/* Link */}
         <input
-          className="border w-full mb-3 p-2 rounded"
+          className="form-control mb-3 shadow-none"
           value={link}
           onChange={(e) => setLink(e.target.value)}
           placeholder="Project Link (https://...)"
         />
 
-        {/* Icon */}
         <input
-          className="border w-full mb-4 p-2 rounded"
+          className="form-control mb-0 shadow-none"
           value={icon}
           onChange={(e) => setIcon(e.target.value)}
           placeholder="Icon (emoji like 🚀)"
         />
-
-        {/* Buttons */}
-        <div className="flex justify-end gap-2">
-          <button
-            className="px-4 py-2 border rounded"
-            onClick={close}
-          >
-            Cancel
-          </button>
-
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={handleSubmit}
-          >
-            {editData ? "Update" : "Save"}
-          </button>
-        </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }
 

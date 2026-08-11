@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./AdminLogin.css";
 import ThemeToggle from "../../components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../services/api";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ const AdminLogin = () => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
+      const res = await fetch(`${BASE_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

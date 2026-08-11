@@ -93,8 +93,17 @@ html[data-theme="light"] .text-white {
   color: var(--app-text) !important;
 }
 
+html[data-theme="light"] .text-white-50 {
+  color: var(--app-text) !important;
+}
+
 html[data-theme="light"] .text-muted,
 html[data-theme="light"] .text-secondary {
+  color: var(--app-text-secondary) !important;
+}
+
+html[data-theme="dark"] .text-muted,
+html[data-theme="dark"] .text-secondary {
   color: var(--app-text-secondary) !important;
 }
 
@@ -111,4 +120,33 @@ html[data-theme="light"] .bg-light {
 
 html[data-theme="light"] .text-dark {
   color: var(--app-text) !important;
+}
+html[data-theme="dark"] .text-dark {
+  color: var(--app-text) !important;
+}
+
+.admin-sidebar a.active,
+.admin-sidebar a.active i
+{
+  color: #fff !important;
+}
+.search-wrapper
+{
+  position: relative;
+}
+.search-wrapper .search-icon
+{
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--app-text-secondary);
+}
+.search-wrapper input
+{
+  padding-left: 2rem;
+}
+.btn-blue
+{
+  color: #ffffff;
 }
