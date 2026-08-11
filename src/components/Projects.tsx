@@ -23,7 +23,7 @@ const Projects = () => {
         "_id": "69bd796847b395724093047f",
         "description": "AI-powered recruitment and resume builder platform with modern UI and seamless API integration.",
         "icon": "🤖",
-        "link": "",
+        "link": "https://www.talentfitai.com/",
         "tech": [
             "React JS",
             "TypeScript",

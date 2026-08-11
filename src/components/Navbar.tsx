@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
+import ThemeToggle from "./ThemeToggle";
+
+const resumePdf = new URL("../assets/CHANDAN_CHAKRABORTY_CV.pdf", import.meta.url).href;
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -59,10 +62,13 @@ const Navbar = () => {
               </a>
             ))}
 
+            <ThemeToggle className="navbar-theme-btn" />
+
             {/* CTA Button */}
             <a
-              href="/resume.pdf"
+              href={resumePdf}
               target="_blank"
+              rel="noopener noreferrer"
               className="navbar-btn"
             >
               <i className="bi bi-file-text me-2"></i>
@@ -126,9 +132,12 @@ const Navbar = () => {
               </div>
 
               <div className="sidebar-footer">
+                <ThemeToggle className="sidebar-theme-btn" />
+
                 <a
-                  href="/resume.pdf"
+                  href={resumePdf}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="sidebar-resume-btn"
                   onClick={() => setMenuOpen(false)}
                 >

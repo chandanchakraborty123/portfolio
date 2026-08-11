@@ -5,7 +5,7 @@ const Skills = () => {
   const [skillsData, setSkillsData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  
+
   useEffect(() => {
     // fetchSkills();
 
@@ -15,7 +15,8 @@ const Skills = () => {
         "category": "Frontend Frameworks",
         "skills": [
             "React.js",
-            "Angular (13–15+)"
+            "Angular (13–15+)",
+            "Ionic Framework"
         ]
     },
     {
@@ -53,7 +54,14 @@ const Skills = () => {
         "skills": [
             "Git & GitHub"
         ]
-    }
+    },
+    {
+        "_id": "69c179bdeed96261e15a2f32",
+        "category": "Editor",
+        "skills": ["Visual Studio Code",
+          "Cursor",
+          "Sublime Text"]
+        }
 ]
 
 
@@ -102,7 +110,7 @@ const Skills = () => {
                   {category.skills.map((skill: string, index: number) => (
                     <p
                       key={index}
-                      className="text-gray-300 font-medium pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-blue-400 group-hover:text-gray-100 transition-colors"
+                      className="text-gray-300 font-medium pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-blue-400 group-hover:text-gray-100 transition-colors mb-1"
                     >
                       {skill}
                     </p>

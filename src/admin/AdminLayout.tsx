@@ -1,9 +1,12 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useTheme } from "../theme/ThemeContext";
+import ThemeToggle from "../components/ThemeToggle";
 
 function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
+  const { theme } = useTheme();
 
   const navigation = [
     { name: "Dashboard", path: "/admin", icon: "bi bi-speedometer2" },
@@ -22,7 +25,7 @@ const logout = () => {
   window.location.href = "/login";
 };
   return (
-    <div className="d-flex vh-100 bg-light">
+    <div className={`d-flex vh-100 admin-shell theme-${theme}`}>
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
@@ -113,7 +116,7 @@ const logout = () => {
       {/* Main Content */}
       <div className="flex-grow-1 d-flex flex-column overflow-hidden">
         {/* Top Header */}
-        <header className="bg-white shadow-sm border-bottom">
+        <header className="admin-header shadow-sm border-bottom">
           <div className="px-4 py-3 d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center gap-3">
               <button
@@ -133,6 +136,8 @@ const logout = () => {
             
             {/* User Menu */}
             <div className="d-flex align-items-center gap-3">
+              <ThemeToggle className="btn btn-outline-secondary btn-sm admin-theme-toggle" compact />
+
               <div className="dropdown">
                 <button 
                   className="btn btn-link text-decoration-none p-0 d-flex align-items-center gap-2"
@@ -160,22 +165,33 @@ const logout = () => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-grow-1 overflow-auto bg-light p-4">
+        <main className="flex-grow-1 overflow-auto admin-main p-4">
           <Outlet />
         </main>
       </div>
 
       <style type="text/css">{`
+        .admin-shell {
+          background: var(--app-bg);
+          color: var(--app-text);
+        }
+
+        .admin-header,
+        .admin-main {
+          background: var(--app-surface);
+          color: var(--app-text);
+        }
+
         .bg-gradient-dark {
-          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+          background: var(--admin-sidebar-bg);
         }
         
         .bg-gradient-primary {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: var(--brand-gradient);
         }
         
         .hover-bg-hover:hover {
-          background-color: rgba(255, 255, 255, 0.1);
+          background-color: var(--hover-bg);
         }
         
         .translate-x-n100 {

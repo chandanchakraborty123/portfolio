@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./AdminLogin.css";
+import ThemeToggle from "../../components/ThemeToggle";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -42,6 +43,8 @@ const AdminLogin = () => {
 
   return (
     <div className="login-container">
+      <ThemeToggle className="login-theme-toggle" compact />
+
       {/* Custom Cursor */}
       <div 
         className={`custom-cursor ${cursorVariant}`}

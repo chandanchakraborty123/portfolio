@@ -622,3 +622,89 @@
 .card-glow {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.login-theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--app-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--app-text);
+  font-weight: 600;
+}
+
+.login-theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+html[data-theme="light"] .login-container {
+  background: #f8fafc;
+}
+
+html[data-theme="light"] .gradient-bg {
+  background: linear-gradient(
+    125deg,
+    #eef2ff 0%,
+    #e0f2fe 25%,
+    #dbeafe 50%,
+    #e0f2fe 75%,
+    #eef2ff 100%
+  );
+}
+
+html[data-theme="light"] .particle {
+  background: linear-gradient(135deg, #60a5fa, #22d3ee);
+}
+
+html[data-theme="light"] .login-card {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+html[data-theme="light"] .card-glow {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent);
+}
+
+html[data-theme="light"] .login-title {
+  background: linear-gradient(135deg, #1d4ed8, #0f766e);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+html[data-theme="light"] .login-subtitle,
+html[data-theme="light"] .input-icon {
+  color: #475569;
+}
+
+html[data-theme="light"] .login-input {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+}
+
+html[data-theme="light"] .login-input:focus,
+html[data-theme="light"] .login-input:hover {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+html[data-theme="light"] .login-btn {
+  background: linear-gradient(135deg, #2563eb, #0891b2);
+}
+
+html[data-theme="light"] .cursor-dot {
+  background: #2563eb;
+}
+
+html[data-theme="light"] .cursor-ring {
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+html[data-theme="light"] .cursor-light {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0) 70%);
+}

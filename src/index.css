@@ -4,6 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --app-bg: #0a0a0f;
+  --app-surface: #111827;
+  --app-surface-2: #1f2937;
+  --app-text: #f8fafc;
+  --app-text-secondary: #9ca3af;
+  --app-border: rgba(59, 130, 246, 0.2);
+  --brand-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --brand-gradient-2: linear-gradient(135deg, #3b82f6, #06b6d4);
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --admin-sidebar-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+html[data-theme="light"] {
+  --app-bg: #f8fafc;
+  --app-surface: #ffffff;
+  --app-surface-2: #eef2f7;
+  --app-text: #0f172a;
+  --app-text-secondary: #475569;
+  --app-border: rgba(15, 23, 42, 0.12);
+  --hover-bg: rgba(15, 23, 42, 0.06);
+  --admin-sidebar-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
 /* @layer base {
   body {
     @apply font-sans;
@@ -16,6 +40,9 @@
 body
 {
   font-family: 'Public Sans', sans-serif;
+  background: var(--app-bg);
+  color: var(--app-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 h1, h2, h3, h4, h5, h6
 {
@@ -27,4 +54,61 @@ p, a, span, li, div
 }
 a{
   text-decoration: none !important;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+html[data-theme="light"] .bg-gray-950,
+html[data-theme="light"] .bg-gray-900,
+html[data-theme="light"] .bg-gray-800 {
+  background-color: var(--app-surface) !important;
+}
+
+html[data-theme="light"] [class*="from-gray-900"],
+html[data-theme="light"] [class*="from-gray-800"],
+html[data-theme="light"] [class*="from-gray-700"],
+html[data-theme="light"] [class*="to-gray-900"],
+html[data-theme="light"] [class*="to-gray-800"],
+html[data-theme="light"] [class*="to-gray-700"],
+html[data-theme="light"] [class*="via-gray-900"],
+html[data-theme="light"] [class*="via-gray-800"],
+html[data-theme="light"] [class*="via-gray-700"] {
+  background-image: none !important;
+  background-color: var(--app-surface) !important;
+}
+
+html[data-theme="light"] .bg-gray-900\/50,
+html[data-theme="light"] .bg-gray-800\/50,
+html[data-theme="light"] .bg-gray-950\/50 {
+  background-color: var(--app-surface) !important;
+}
+
+html[data-theme="light"] .text-gray-400,
+html[data-theme="light"] .text-gray-300,
+html[data-theme="light"] .text-gray-200,
+html[data-theme="light"] .text-gray-100,
+html[data-theme="light"] .text-white {
+  color: var(--app-text) !important;
+}
+
+html[data-theme="light"] .text-muted,
+html[data-theme="light"] .text-secondary {
+  color: var(--app-text-secondary) !important;
+}
+
+html[data-theme="light"] .border-gray-700,
+html[data-theme="light"] .border-gray-600,
+html[data-theme="light"] .border-secondary {
+  border-color: var(--app-border) !important;
+}
+
+html[data-theme="light"] .bg-white,
+html[data-theme="light"] .bg-light {
+  background-color: var(--app-surface) !important;
+}
+
+html[data-theme="light"] .text-dark {
+  color: var(--app-text) !important;
 }
