@@ -5,6 +5,7 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Awards from "./components/Awards";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import ClickSpark from "./components/ClickSpark";
 import { useTheme } from "./theme/ThemeContext";
 
@@ -29,6 +30,7 @@ function Home() {
         <Projects />
         <Awards />
         <Contact />
+        <Footer />
       </div>
     </ClickSpark>
   );
