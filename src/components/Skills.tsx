@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import DotField from "./DotField";
+import { useTheme } from "../theme/ThemeContext";
 
 const Skills = () => {
   const [skillsData, setSkillsData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const { theme } = useTheme();
+  const isLight = theme === "light";
 
   useEffect(() => {
     const data = [
@@ -43,8 +47,25 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" className="py-32 px-6 bg-gray-950">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="relative py-32 px-6 bg-gray-950 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <DotField
+          dotRadius={2}
+          dotSpacing={16}
+          cursorRadius={420}
+          bulgeStrength={55}
+          waveAmplitude={2}
+          gradientFrom={
+            isLight ? "rgba(37, 99, 235, 0.85)" : "rgba(96, 165, 250, 0.9)"
+          }
+          gradientTo={
+            isLight ? "rgba(8, 145, 178, 0.7)" : "rgba(34, 211, 238, 0.75)"
+          }
+          glowColor={isLight ? "#93c5fd" : "#1e3a8a"}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
             My Skills
@@ -59,7 +80,7 @@ const Skills = () => {
             {skillsData.map((category, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 group hover:scale-105"
+                className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 group hover:scale-105 backdrop-blur-sm"
               >
                 <h3 className="text-lg font-bold text-blue-400 mb-4 group-hover:text-cyan-400 transition-colors">
                   {category.category}

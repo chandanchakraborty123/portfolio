@@ -154,7 +154,10 @@ html[data-theme="light"] .border-gray-700 {
 html[data-theme="light"] .border-gray-600 {
   border-color: rgba(15, 23, 42, 0.15) !important;
 }
-
+.hero-section
+{
+  padding-top: 100px;
+}
 html[data-theme="light"] .hero-section {
   background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 45%, #eef2f7 100%) !important;
 }
@@ -267,23 +270,29 @@ html[data-theme="dark"] .text-dark {
   color: #ffffff;
 }
 
-.threads-container {
+.iridescence-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.threads-container canvas {
+.iridescence-container canvas {
   width: 100% !important;
   height: 100% !important;
   display: block;
 }
 
-html[data-theme="light"] .hero-section .hero-threads-overlay {
+.dot-field-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+html[data-theme="light"] .hero-section .hero-bg-overlay {
   background: linear-gradient(
     to bottom,
-    rgba(238, 242, 255, 0.55) 0%,
+    rgba(238, 242, 255, 0.45) 0%,
     rgba(248, 250, 252, 0.2) 50%,
-    rgba(238, 242, 247, 0.75) 100%
+    rgba(238, 242, 247, 0.7) 100%
   ) !important;
 }
