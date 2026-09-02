@@ -18,13 +18,18 @@
 }
 
 html[data-theme="light"] {
-  --app-bg: #f8fafc;
+  --app-bg: #eef2f7;
   --app-surface: #ffffff;
-  --app-surface-2: #eef2f7;
+  --app-surface-2: #f8fafc;
+  --app-surface-3: #e2e8f0;
   --app-text: #0f172a;
   --app-text-secondary: #475569;
-  --app-border: rgba(15, 23, 42, 0.12);
-  --hover-bg: rgba(15, 23, 42, 0.06);
+  --app-text-muted: #64748b;
+  --app-border: rgba(15, 23, 42, 0.1);
+  --app-accent: #2563eb;
+  --app-accent-soft: #dbeafe;
+  --hover-bg: rgba(15, 23, 42, 0.05);
+  --card-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.05);
   --admin-sidebar-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
@@ -60,41 +65,153 @@ a{
   min-height: 100vh;
 }
 
-html[data-theme="light"] .bg-gray-950,
-html[data-theme="light"] .bg-gray-900,
+html[data-theme="light"] .bg-gray-950 {
+  background-color: var(--app-bg) !important;
+}
+
+html[data-theme="light"] .bg-gray-900 {
+  background-color: var(--app-surface-2) !important;
+}
+
 html[data-theme="light"] .bg-gray-800 {
-  background-color: var(--app-surface) !important;
+  background-color: var(--app-surface-3) !important;
 }
 
-html[data-theme="light"] [class*="from-gray-900"],
-html[data-theme="light"] [class*="from-gray-800"],
-html[data-theme="light"] [class*="from-gray-700"],
-html[data-theme="light"] [class*="to-gray-900"],
-html[data-theme="light"] [class*="to-gray-800"],
-html[data-theme="light"] [class*="to-gray-700"],
-html[data-theme="light"] [class*="via-gray-900"],
-html[data-theme="light"] [class*="via-gray-800"],
-html[data-theme="light"] [class*="via-gray-700"] {
-  background-image: none !important;
-  background-color: var(--app-surface) !important;
+html[data-theme="light"] .bg-gray-900\/50 {
+  background-color: rgba(248, 250, 252, 0.9) !important;
 }
 
-html[data-theme="light"] .bg-gray-900\/50,
 html[data-theme="light"] .bg-gray-800\/50,
 html[data-theme="light"] .bg-gray-950\/50 {
   background-color: var(--app-surface) !important;
 }
 
+html[data-theme="light"] div[class*="from-gray-900"],
+html[data-theme="light"] div[class*="from-gray-800"],
+html[data-theme="light"] div[class*="from-gray-700"],
+html[data-theme="light"] div[class*="to-gray-900"],
+html[data-theme="light"] div[class*="to-gray-800"],
+html[data-theme="light"] div[class*="to-gray-700"],
+html[data-theme="light"] div[class*="via-gray-900"],
+html[data-theme="light"] div[class*="via-gray-800"],
+html[data-theme="light"] div[class*="via-gray-700"] {
+  background-image: none !important;
+  background-color: var(--app-surface) !important;
+  box-shadow: var(--card-shadow);
+}
+
+html[data-theme="light"] section.bg-gradient-to-b {
+  background-color: var(--app-surface-2) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .bg-gray-700 {
+  background-color: var(--app-surface-3) !important;
+}
+
 html[data-theme="light"] .text-gray-400,
-html[data-theme="light"] .text-gray-300,
+html[data-theme="light"] .text-gray-300 {
+  color: var(--app-text-muted) !important;
+}
+
 html[data-theme="light"] .text-gray-200,
-html[data-theme="light"] .text-gray-100,
-html[data-theme="light"] .text-white {
+html[data-theme="light"] .text-gray-100 {
+  color: var(--app-text-secondary) !important;
+}
+
+html[data-theme="light"] h1.text-white,
+html[data-theme="light"] h2.text-white,
+html[data-theme="light"] h3.text-white,
+html[data-theme="light"] h4.text-white,
+html[data-theme="light"] .text-white:not(a):not(button) {
   color: var(--app-text) !important;
 }
 
 html[data-theme="light"] .text-white-50 {
+  color: var(--app-text-secondary) !important;
+}
+
+html[data-theme="light"] a[class*="from-blue"],
+html[data-theme="light"] button[class*="from-blue"],
+html[data-theme="light"] .btn-keep-white {
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] .text-blue-400 {
+  color: #2563eb !important;
+}
+
+html[data-theme="light"] .text-blue-300 {
+  color: #1d4ed8 !important;
+}
+
+html[data-theme="light"] .border-gray-700\/50,
+html[data-theme="light"] .border-gray-700 {
+  border-color: var(--app-border) !important;
+}
+
+html[data-theme="light"] .border-gray-600 {
+  border-color: rgba(15, 23, 42, 0.15) !important;
+}
+
+html[data-theme="light"] .hero-section {
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 45%, #eef2f7 100%) !important;
+}
+
+html[data-theme="light"] .hero-section .hero-glow-blue {
+  background-color: rgba(59, 130, 246, 0.12) !important;
+}
+
+html[data-theme="light"] .hero-section .hero-glow-cyan {
+  background-color: rgba(6, 182, 212, 0.08) !important;
+}
+
+html[data-theme="light"] .hero-section .hero-badge {
+  background-color: rgba(37, 99, 235, 0.08) !important;
+  border-color: rgba(37, 99, 235, 0.2) !important;
+  color: #1d4ed8 !important;
+}
+
+html[data-theme="light"] .hero-section .hero-title {
   color: var(--app-text) !important;
+}
+
+html[data-theme="light"] .hero-section .hero-subtitle {
+  color: var(--app-text-secondary) !important;
+}
+
+html[data-theme="light"] .hero-section .hero-subtitle-accent {
+  color: #2563eb !important;
+}
+
+html[data-theme="light"] .hero-section .hero-btn-secondary {
+  color: var(--app-text-secondary) !important;
+  border-color: var(--app-border) !important;
+  background-color: var(--app-surface) !important;
+}
+
+html[data-theme="light"] .hero-section .hero-btn-secondary:hover {
+  background-color: var(--app-surface-2) !important;
+  border-color: rgba(37, 99, 235, 0.35) !important;
+  color: #1d4ed8 !important;
+}
+
+html[data-theme="light"] .section-title {
+  background-image: linear-gradient(to right, #1d4ed8, #0891b2) !important;
+}
+
+html[data-theme="light"] .page-shell {
+  background-color: var(--app-bg) !important;
+  color: var(--app-text) !important;
+}
+
+html[data-theme="light"] .text-cyan-400 {
+  color: #0891b2 !important;
+}
+
+html[data-theme="light"] .mobile-menu-btn {
+  color: var(--app-text);
 }
 
 html[data-theme="light"] .text-muted,
@@ -107,10 +224,9 @@ html[data-theme="dark"] .text-secondary {
   color: var(--app-text-secondary) !important;
 }
 
-html[data-theme="light"] .border-gray-700,
 html[data-theme="light"] .border-gray-600,
 html[data-theme="light"] .border-secondary {
-  border-color: var(--app-border) !important;
+  border-color: rgba(15, 23, 42, 0.15) !important;
 }
 
 html[data-theme="light"] .bg-white,
@@ -149,4 +265,25 @@ html[data-theme="dark"] .text-dark {
 .btn-blue
 {
   color: #ffffff;
+}
+
+.threads-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.threads-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+html[data-theme="light"] .hero-section .hero-threads-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(238, 242, 255, 0.55) 0%,
+    rgba(248, 250, 252, 0.2) 50%,
+    rgba(238, 242, 247, 0.75) 100%
+  ) !important;
 }
