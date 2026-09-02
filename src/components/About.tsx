@@ -1,9 +1,12 @@
 const skills = [
   { name: "React", icon: "bi bi-braces", level: 80 },
-  { name: "Angular", icon: "bi bi-code-square", level: 85 },
+  { name: "Angular", icon: "bi bi-code-square", level: 50 },
   { name: "TypeScript", icon: "bi bi-filetype-js", level: 79 },
+  { name: "JavaScript", icon: "bi bi-filetype-js", level: 79 },
+  { name: "HTML", icon: "bi bi-filetype-html", level: 79 },
+  { name: "CSS", icon: "bi bi-filetype-css", level: 79 },
   { name: "Tailwind CSS", icon: "bi bi-brush", level: 86 },
-  { name: "UX Design", icon: "bi bi-pencil-square", level: 30 },
+  { name: "Bootstrap", icon: "bi bi-bootstrap", level: 70 },
 ];
 
 const achievements = [
