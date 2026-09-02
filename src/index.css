@@ -921,6 +921,116 @@ html[data-theme="dark"] .text-dark {
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
 
+/* Site footer */
+.site-footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  background: linear-gradient(180deg, rgba(3, 7, 18, 0.4), rgba(3, 7, 18, 0.95));
+}
+
+.site-footer-brand {
+  color: var(--app-text, #f8fafc);
+}
+
+.site-footer-mark {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.35);
+}
+
+.site-footer-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #60a5fa;
+}
+
+.site-footer-copy {
+  color: #94a3b8;
+}
+
+.site-footer-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.site-footer-link:hover {
+  color: #22d3ee;
+}
+
+.site-footer-social {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.site-footer-social:hover {
+  transform: translateY(-2px);
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.12);
+}
+
+.site-footer-bottom {
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+html[data-theme="light"] .site-footer {
+  background: linear-gradient(180deg, #f8fafc, #eff6ff);
+  border-top-color: rgba(15, 23, 42, 0.1);
+}
+
+html[data-theme="light"] .site-footer-brand {
+  color: #0f172a;
+}
+
+html[data-theme="light"] .site-footer-label {
+  color: #2563eb;
+}
+
+html[data-theme="light"] .site-footer-copy {
+  color: #64748b;
+}
+
+html[data-theme="light"] .site-footer-link {
+  color: #334155;
+}
+
+html[data-theme="light"] .site-footer-link:hover {
+  color: #2563eb;
+}
+
+html[data-theme="light"] .site-footer-social {
+  color: #334155;
+  background: #eff6ff;
+}
+
+html[data-theme="light"] .site-footer-social:hover {
+  color: #2563eb;
+  background: #dbeafe;
+}
+
+html[data-theme="light"] .site-footer-bottom {
+  border-top-color: rgba(15, 23, 42, 0.1);
+}
+
 .hero-btn {
   display: inline-flex;
   align-items: center;
