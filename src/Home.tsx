@@ -7,7 +7,7 @@ import Contact from "./components/Contact";
 
 function Home() {
   return (
-    <div className="bg-gray-950 text-white scroll-smooth">
+    <div className="page-shell bg-gray-950 text-white scroll-smooth">
       <Navbar />
       <Hero />
       <About />

@@ -2,16 +2,15 @@ const Contact = () => {
   return (
     <section id="contact" className="py-32 px-6 bg-gray-950">
       <div className="max-w-4xl mx-auto">
-
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
-            Let's Connect
+          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+            Let&apos;s Connect
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full" />
         </div>
 
         <p className="text-center text-lg text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Interested in working together? I'd love to hear from you!
+          Interested in working together? I&apos;d love to hear from you!
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
@@ -36,7 +35,7 @@ const Contact = () => {
               <p className="text-blue-400 font-medium">Kolkata, India | Howrah, India</p>
             </div>
           </div>
-          <a href="https://www.linkedin.com/in/chandan-chakraborty-9962b3215/" target="_blank" className="group">
+          <a href="https://www.linkedin.com/in/chandan-chakraborty-9962b3215/" target="_blank" rel="noopener noreferrer" className="group">
             <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-8 text-center hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 transform hover:-translate-y-2">
               <div className="text-5xl mb-4">💼</div>
               <h3 className="text-lg font-semibold text-gray-300 mb-2 group-hover:text-blue-400 transition-colors">LinkedIn</h3>
@@ -50,10 +49,9 @@ const Contact = () => {
             Whether you have a question or just want to say hi, feel free to reach out!
           </p>
         </div>
-
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

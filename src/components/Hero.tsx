@@ -1,83 +1,69 @@
-import { motion } from "framer-motion";
+import ShinyText from "./ShinyText";
+import Threads from "./Threads";
+import { useTheme } from "../theme/ThemeContext";
 
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 bg-gray-950 overflow-hidden">
+  const { theme } = useTheme();
+  const isLight = theme === "light";
 
-      {/* 🔥 Background Glow */}
-      <div className="absolute w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl top-[-100px] left-[-100px]" />
-      <div className="absolute w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-3xl bottom-[-100px] right-[-100px]" />
+  return (
+    <section className="hero-section relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 bg-gray-950 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <Threads
+          color={isLight ? [0.15, 0.39, 0.92] : [0.37, 0.65, 0.98]}
+          amplitude={1}
+          distance={0.25}
+          enableMouseInteraction
+        />
+      </div>
+      <div className="hero-threads-overlay absolute inset-0 z-[1] bg-gradient-to-b from-gray-950/40 via-transparent to-gray-950/80 pointer-events-none" />
 
       <div className="space-y-8 max-w-4xl relative z-10">
-
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-block px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-sm font-medium backdrop-blur-md"
-        >
+        <div className="hero-badge inline-block px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-sm font-medium backdrop-blur-md">
           ✨ Welcome to my portfolio
-        </motion.div>
+        </div>
 
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold leading-tight"
-        >
-          Hi, I'm{" "}
-          <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
-            Chandan Chakraborty
-          </span>
-        </motion.h1>
+        <h1 className="hero-title text-5xl md:text-7xl font-bold leading-tight">
+          Hi, I&apos;m{" "}
+          <ShinyText
+            text="Chandan Chakraborty"
+            className="hero-name"
+            color={isLight ? "#2563eb" : "#60a5fa"}
+            shineColor={isLight ? "#ffffff" : "#e0f2fe"}
+            speed={3}
+            spread={120}
+            pauseOnHover
+          />
+        </h1>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
-        >
+        <p className="hero-subtitle text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
           Frontend Developer crafting beautiful, scalable web experiences with
-          <span className="text-blue-400 font-semibold">
+          <span className="hero-subtitle-accent text-blue-400 font-semibold">
             {" "}React, Angular & TypeScript
           </span>
-        </motion.p>
+        </p>
 
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center pt-6"
-        >
+        <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
           <a
             href="#projects"
-            className="px-8 py-4 bg-gradient-to-r text-white from-blue-600 to-blue-700 rounded-xl font-semibold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105"
+            className="btn-keep-white px-8 py-4 bg-gradient-to-r text-white from-blue-600 to-blue-700 rounded-xl font-semibold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105"
           >
             🚀 View Projects
           </a>
 
           <a
             href="#contact"
-            className="px-8 py-4 border border-gray-600 text-gray-300 rounded-xl font-semibold hover:bg-gray-800 hover:border-blue-500 transition-all duration-300 transform hover:scale-105"
+            className="hero-btn-secondary px-8 py-4 border border-gray-600 text-gray-300 rounded-xl font-semibold hover:bg-gray-800 hover:border-blue-500 transition-all duration-300 transform hover:scale-105"
           >
             📩 Contact Me
           </a>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Scroll Down */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="mt-16"
-      >
+      <div className="mt-16 relative z-10">
         <div className="animate-bounce">
           <svg
-            className="w-6 h-6 text-blue-400"
+            className="w-6 h-6 text-blue-400 mx-auto"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -90,8 +76,7 @@ const Hero = () => {
             />
           </svg>
         </div>
-      </motion.div>
-
+      </div>
     </section>
   );
 };
