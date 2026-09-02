@@ -32,6 +32,7 @@ const Navbar = () => {
     { name: "about", icon: "bi bi-person", label: "About" },
     { name: "skills", icon: "bi bi-code-square", label: "Skills" },
     { name: "projects", icon: "bi bi-folder2-open", label: "Projects" },
+    { name: "awards", icon: "bi bi-trophy", label: "Awards" },
     { name: "contact", icon: "bi bi-envelope", label: "Contact" },
   ];
 

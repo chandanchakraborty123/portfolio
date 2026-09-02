@@ -43,19 +43,20 @@ const Hero = () => {
           </span>
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
-          <a
-            href="#projects"
-            className="btn-keep-white px-8 py-4 bg-gradient-to-r text-white from-blue-600 to-blue-700 rounded-xl font-semibold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105"
-          >
-            🚀 View Projects
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center pt-6">
+          <a href="#projects" className="hero-btn hero-btn-primary btn-keep-white">
+            <span className="hero-btn-icon" aria-hidden="true">
+              <i className="bi bi-grid-1x2-fill" />
+            </span>
+            View Projects
+            <i className="bi bi-arrow-right hero-btn-arrow" aria-hidden="true" />
           </a>
 
-          <a
-            href="#contact"
-            className="hero-btn-secondary px-8 py-4 border border-gray-600 text-gray-300 rounded-xl font-semibold hover:bg-gray-800 hover:border-blue-500 transition-all duration-300 transform hover:scale-105"
-          >
-            📩 Contact Me
+          <a href="#contact" className="hero-btn hero-btn-secondary">
+            <span className="hero-btn-icon" aria-hidden="true">
+              <i className="bi bi-chat-dots-fill" />
+            </span>
+            Contact Me
           </a>
         </div>
       </div>
