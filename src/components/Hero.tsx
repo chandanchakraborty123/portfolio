@@ -11,6 +11,7 @@ const Hero = () => {
       <div className="space-y-8 max-w-4xl relative z-10">
 
         {/* Badge */}
+        
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
