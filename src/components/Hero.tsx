@@ -1,5 +1,5 @@
 import ShinyText from "./ShinyText";
-import Threads from "./Threads";
+import Iridescence from "./Iridescence";
 import { useTheme } from "../theme/ThemeContext";
 
 const Hero = () => {
@@ -9,14 +9,14 @@ const Hero = () => {
   return (
     <section className="hero-section relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 bg-gray-950 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Threads
-          color={isLight ? [0.15, 0.39, 0.92] : [0.37, 0.65, 0.98]}
-          amplitude={1}
-          distance={0.25}
-          enableMouseInteraction
+        <Iridescence
+          color={isLight ? [0.6, 0.8, 1.0] : [0.4, 0.7, 1.0]}
+          speed={0.8}
+          amplitude={0.12}
+          mouseReact
         />
       </div>
-      <div className="hero-threads-overlay absolute inset-0 z-[1] bg-gradient-to-b from-gray-950/40 via-transparent to-gray-950/80 pointer-events-none" />
+      <div className="hero-bg-overlay absolute inset-0 z-[1] bg-gradient-to-b from-gray-950/50 via-gray-950/25 to-gray-950/80 pointer-events-none" />
 
       <div className="space-y-8 max-w-4xl relative z-10">
         <div className="hero-badge inline-block px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-sm font-medium backdrop-blur-md">

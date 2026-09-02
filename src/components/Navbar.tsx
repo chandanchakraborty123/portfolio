@@ -17,7 +17,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -38,61 +37,53 @@ const Navbar = () => {
 
   return (
     <>
-      <nav
-        className={`navbar-fixed ${
-          scrolled ? "navbar-scrolled" : "navbar-transparent"
-        }`}
-      >
-        <div className="navbar-container">
-          {/* Logo */}
+      <header className={`navbar-shell ${scrolled ? "is-scrolled" : ""}`}>
+        <nav className="navbar-pill">
           <a href="#" className="navbar-logo">
-            Chandan.dev
+            <span className="navbar-logo-mark">C</span>
+            <span className="navbar-logo-text">Chandan.dev</span>
           </a>
 
-          {/* Desktop Menu */}
           <div className="navbar-desktop">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={`#${item.name}`}
-                className="nav-link"
-              >
-                {item.label}
-                <span className="nav-link-underline"></span>
+            <div className="navbar-links">
+              {navItems.map((item) => (
+                <a key={item.name} href={`#${item.name}`} className="nav-link">
+                  {item.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="navbar-actions">
+              <ThemeToggle className="navbar-theme-btn" />
+
+              <a href="/login" className="navbar-login-btn">
+                Login
               </a>
-            ))}
 
-            <ThemeToggle className="navbar-theme-btn" />
-
-            <a href="/login" className="navbar-login-btn">
-              <i className="bi bi-box-arrow-in-right me-2"></i>
-              Login
-            </a>
-
-            {/* CTA Button */}
-            <a
-              href={resumePdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="navbar-btn"
-            >
-              <i className="bi bi-file-text me-2"></i>
-              Resume
-            </a>
+              <a
+                href={resumePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="navbar-cta"
+              >
+                Resume
+              </a>
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
+            type="button"
             className={`mobile-menu-btn ${menuOpen ? "active" : ""}`}
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
           >
-           ☰
-            
+            <span />
+            <span />
+            <span />
           </button>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
-      {/* Mobile Sidebar Overlay */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -103,7 +94,7 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               onClick={() => setMenuOpen(false)}
             />
-            
+
             <motion.div
               className="mobile-sidebar"
               initial={{ x: "100%" }}
@@ -144,7 +135,6 @@ const Navbar = () => {
                   className="sidebar-login-btn"
                   onClick={() => setMenuOpen(false)}
                 >
-                  <i className="bi bi-box-arrow-in-right me-2"></i>
                   Login
                 </a>
 
@@ -155,15 +145,8 @@ const Navbar = () => {
                   className="sidebar-resume-btn"
                   onClick={() => setMenuOpen(false)}
                 >
-                  <i className="bi bi-file-text me-2"></i>
-                  Download Resume
+                  Resume
                 </a>
-                
-                <div className="sidebar-social">
-                  <a href="#" className="social-icon"><i className="bi bi-github"></i></a>
-                  <a href="#" className="social-icon"><i className="bi bi-linkedin"></i></a>
-                  <a href="#" className="social-icon"><i className="bi bi-twitter-x"></i></a>
-                </div>
               </div>
             </motion.div>
           </>

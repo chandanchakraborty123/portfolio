@@ -5,11 +5,10 @@ type ThemeToggleProps = {
   compact?: boolean;
 };
 
-const ThemeToggle = ({ className = "", compact = true }: ThemeToggleProps) => {
+const ThemeToggle = ({ className = "" }: ThemeToggleProps) => {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
-    console.log("compact",compact);
-    
+
   return (
     <button
       type="button"
