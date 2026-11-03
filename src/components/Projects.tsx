@@ -37,7 +37,7 @@ const Projects = () => {
           "Official site for Telangana American Telugu Association with Instagram API integration.",
         icon: "bi bi-globe2",
         link: "",
-        tech: ["Angular", "RxJS", "Bootstrap"],
+        tech: ["React JS", "TypeScript", "Redux", "REST API"],
         title: "TTA Website",
         category: "Organization Site",
         accent: "from-slate-800 via-blue-700 to-cyan-500",
@@ -65,6 +65,18 @@ const Projects = () => {
         category: "Education",
         accent: "from-blue-900 via-indigo-600 to-cyan-400",
         image: "/projects/lalit-tutorials.jpg",
+      },
+      {
+        _id: "ak-news-portfolio-2026",
+        description:
+          "Digital news portal for browsing headlines, stories, and updates with a fast, reader-friendly layout.",
+        icon: "bi bi-newspaper",
+        link: "http://98.94.124.146:8088/",
+        tech: ["React", "Web App", "Responsive UI"],
+        title: "AK News",
+        category: "News & Media",
+        accent: "from-red-700 via-rose-600 to-orange-500",
+        image: "/projects/ak-news.jpg",
       },
     ];
     setProjects(data);
