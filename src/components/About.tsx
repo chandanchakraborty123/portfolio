@@ -29,13 +29,13 @@ function formatExperienceShort({ years, months }: { years: number; months: numbe
 
 const skills = [
   { name: "React", icon: "bi bi-braces", level: 80 },
-  { name: "Angular", icon: "bi bi-code-square", level: 50 },
+  { name: "Angular", icon: "bi bi-code-square", level: 60 },
   { name: "TypeScript", icon: "bi bi-filetype-js", level: 79 },
   { name: "JavaScript", icon: "bi bi-filetype-js", level: 79 },
-  { name: "HTML", icon: "bi bi-filetype-html", level: 79 },
-  { name: "CSS", icon: "bi bi-filetype-css", level: 79 },
+  { name: "HTML", icon: "bi bi-filetype-html", level: 90 },
+  { name: "CSS", icon: "bi bi-filetype-css", level: 88 },
   { name: "Tailwind CSS", icon: "bi bi-brush", level: 86 },
-  { name: "Bootstrap", icon: "bi bi-bootstrap", level: 70 },
+  { name: "Bootstrap", icon: "bi bi-bootstrap", level: 92 },
 ];
 
 const PROJECT_COUNT = "18+";
