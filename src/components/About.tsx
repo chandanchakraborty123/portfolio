@@ -1,3 +1,32 @@
+/** Adjust when your professional frontend career started (updates years/months automatically). */
+const CAREER_START = new Date(2021, 5, 1); // 1 Jun 2021 → ~5y 5m as of late 2026
+
+function getCareerExperience(asOf = new Date()) {
+  let years = asOf.getFullYear() - CAREER_START.getFullYear();
+  let months = asOf.getMonth() - CAREER_START.getMonth();
+  if (asOf.getDate() < CAREER_START.getDate()) {
+    months -= 1;
+  }
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+  return { years, months };
+}
+
+function formatExperienceLong({ years, months }: { years: number; months: number }) {
+  const y = years > 0 ? `${years} ${years === 1 ? "year" : "years"}` : "";
+  const m = months > 0 ? `${months} ${months === 1 ? "month" : "months"}` : "";
+  if (y && m) return `${y} ${m}`;
+  return y || m || "0 months";
+}
+
+function formatExperienceShort({ years, months }: { years: number; months: number }) {
+  if (years > 0 && months > 0) return `${years}y ${months}m`;
+  if (years > 0) return `${years}y`;
+  return `${months}m`;
+}
+
 const skills = [
   { name: "React", icon: "bi bi-braces", level: 80 },
   { name: "Angular", icon: "bi bi-code-square", level: 50 },
@@ -9,10 +38,7 @@ const skills = [
   { name: "Bootstrap", icon: "bi bi-bootstrap", level: 70 },
 ];
 
-const achievements = [
-  { number: "5+", label: "Years Experience", icon: "bi bi-calendar-check" },
-  { number: "18+", label: "Projects Completed", icon: "bi bi-check2-circle" },
-];
+const PROJECT_COUNT = "18+";
 
 const highlights = [
   "React, Angular & TypeScript",
@@ -22,6 +48,15 @@ const highlights = [
 ];
 
 const About = () => {
+  const experience = getCareerExperience();
+  const experienceLong = formatExperienceLong(experience);
+  const experienceShort = formatExperienceShort(experience);
+
+  const achievements = [
+    { number: experienceShort, label: "Experience", icon: "bi bi-calendar-check" },
+    { number: PROJECT_COUNT, label: "Projects Completed", icon: "bi bi-check2-circle" },
+  ];
+
   return (
     <section
       id="about"
@@ -75,7 +110,7 @@ const About = () => {
               <div className="lg:col-span-3 space-y-4 text-gray-300 leading-relaxed">
                 <p>
                   I am a passionate Frontend Developer with over{" "}
-                  <span className="text-blue-400 font-semibold">5 years of experience</span> building
+                  <span className="text-blue-400 font-semibold">{experienceLong} of experience</span> building
                   responsive and scalable web applications using React, Angular, and TypeScript.
                 </p>
                 <p>
